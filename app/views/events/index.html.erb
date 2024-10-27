@@ -1,9 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Events" %>
-
 <h1>Events</h1>
-
 <div id="events">
   <% @events.each do |event| %>
     <%= render event %>
@@ -12,5 +8,8 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New event", new_event_path %>
+<% if user_signed_in? %>
+  <%= link_to "New event", new_event_path %>
+  <%= button_to "Logout", destroy_user_session_path, method: "delete"  %>
+<% else %>
+<% end %>
